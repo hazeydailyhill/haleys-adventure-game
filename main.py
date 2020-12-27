@@ -33,8 +33,10 @@ while robert.health > 0 and player1.health > 0:
         player1.health = gameMechanics.damageCheck(player1.health, robert.robertAttack(), False)
         gameMechanics.healthCheck(player1.name, player1.health)
     else:
+        art.deathAnimation()
         print(robert.name+" has been slain, thank God, his movies were crimes against humanity")
     if player1.health <= 0:
+        art.deathAnimation()
         print(player1.name+" has died. The world deserved more.")
     #robert.health = 0 
     cont = input("\nhit enter to continue...\n")
