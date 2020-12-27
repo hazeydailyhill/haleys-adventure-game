@@ -27,7 +27,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
             damage = random.randint(7, 15)
             if damage >= 10:
                 bleed = True
-                print("bleed")
+                art.bleedHit()
             print("You have punched", self.enemy, "for",damage, "damage")
         return damage, bleed 
 
