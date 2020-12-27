@@ -2,6 +2,7 @@ import random
 import os
 import time
 import credits1
+import gameMechanics
 from badGuy import *
 from User import *
 
@@ -20,12 +21,16 @@ os.system("cls")
 while robert.health > 0 and player1.health > 0:
     print("\n"+player1.name+"'s turn"+"\n")
     robert.health -= player1.attackChoice()
-    robert.healthCheck()
+    gameMechanics.healthCheck(robert.name, robert.health)
     time.sleep(1)
     if robert.health > 0:
         print("\n"+robert.name+"'s turn"+"\n")
         player1.health -= robert.robertAttack()
-        player1.healthCheck()
+        gameMechanics.healthCheck(player1.name, player1.health)
+    else:
+        print(robert.name+" has been slain, thank God, his movies were crimes against humanity")
+    if player1.health <= 0:
+        print(player1.name+" has died. The world deserved more.")
     #robert.health = 0 
     cont = input("\nhit enter to continue...\n")
     os.system("cls")

@@ -1,4 +1,5 @@
 import random 
+import art
 
 class Player: #Create player functions: startFight, punch, kick, curbstomp, steal identity (get his social security number and attain his wealth)
     def __init__(self, name, age, height, socialSecurityNumber, health, enemy):
@@ -30,7 +31,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
         damage = random.randint(6, 12)
         if random.randint(0,10) %7 == 0:
             damage *= 2
-            print("CRITICAL HIT!!!!!")
+            art.criticalHit()
         print("You have kicked", self.enemy, "for", damage, "damage")
         return damage
     
@@ -55,12 +56,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
             print("input not recognized, turn skipped, eat farts")
             return 0
     
-    def healthCheck(self):
-        if self.health > 0:
-            print(self.name+"'s health now:", self.health)
-        else:
-            print(self.name+" has died. The world deserved more.")
-
+    
 def newPlayer():
     name = str(input("what is your name? "))
     age = str(input("how old are you? " ))

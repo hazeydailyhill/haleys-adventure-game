@@ -27,7 +27,7 @@ class Enemy: #Create player functions: punch, kick, be bad at acting(i want this
 
     def actBadly(self):
         x = random.randint(0,800)
-        damage = (8.1*(math.log(x+7.5,10))+1)//1
+        damage = int((8.1*(math.log(x+7.5,10))+1)//1)
         print("Robert has begun doing improv, which deals a whopping", damage, "damage to",self.opponent+"'s psyche")
         return damage
     
@@ -35,12 +35,7 @@ class Enemy: #Create player functions: punch, kick, be bad at acting(i want this
         print(self.opponent, "has reduced Robert Pattinson's health to", self.health)
         return self.health
 
-    def healthCheck(self):
-        if self.health > 0:
-            print(self.name+"'s health now:", self.health)
-        else:
-            print(self.name+" has been slain, thank God, his movies were crimes against humanity")
-    
+
     def robertAttack(self):
         choice = random.randint(1,3)
         if choice == 1:
