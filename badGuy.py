@@ -2,11 +2,12 @@ import random
 import math
 
 class Enemy: #Create player functions: punch, kick, be bad at acting(i want this to be his most deadly weapon in a fight. Causes -30 damage), damage robert/health -= player1.punch
-    def __init__(self, name, socialSecurityNumber, health, opponent):
+    def __init__(self, name, socialSecurityNumber, health, opponent, bleed):
         self.name = name 
         self.socialSecurityNumber = socialSecurityNumber
         self.health = health
         self.opponent = opponent
+        self.bleed = bleed #bleed damage stat is a boolean (either bleeding or not TF)
 
     def punch(self):
         if random.randint(0,10) %7 == 0:
@@ -35,13 +36,23 @@ class Enemy: #Create player functions: punch, kick, be bad at acting(i want this
         print(self.opponent, "has reduced Robert Pattinson's health to", self.health)
         return self.health
 
+    def heal(self):
+        self.health += 10
+        print(self.name, "has healed to", self.health, "health. nice.")
+
 
     def robertAttack(self):
-        choice = random.randint(1,3)
+        if self.bleed:
+            choice = random.randint(1,4)
+        else:
+            choice = random.randint(1,3)
         if choice == 1:
             return self.punch()
         elif choice == 2:
             return self.kick()
-        else:
+        elif choice == 3:
             return self.actBadly()
+        else:
+            self.heal()
+            return 0
 

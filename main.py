@@ -16,16 +16,21 @@ player1 = Player("Haley",19,0,1,100, "Robert Pattinson")
 
 
 
-robert = Enemy("Robert Pattinson", 1234567, 100, player1.name)
+robert = Enemy("Robert Pattinson", 1234567, 100, player1.name, False)
 os.system("cls")
 while robert.health > 0 and player1.health > 0:
     print("\n"+player1.name+"'s turn"+"\n")
-    robert.health -= player1.attackChoice()
+    print(robert.bleed)
+    initialBleed = robert.bleed
+    directDamage, robert.bleed = player1.attackChoice()
+    if initialBleed != robert.bleed:
+        robert.bleed = True
+    robert.health = gameMechanics.damageCheck(robert.health, directDamage, robert.bleed)
     gameMechanics.healthCheck(robert.name, robert.health)
     time.sleep(1)
     if robert.health > 0:
         print("\n"+robert.name+"'s turn"+"\n")
-        player1.health -= robert.robertAttack()
+        player1.health = gameMechanics.damageCheck(player1.health, robert.robertAttack(), False)
         gameMechanics.healthCheck(player1.name, player1.health)
     else:
         print(robert.name+" has been slain, thank God, his movies were crimes against humanity")
