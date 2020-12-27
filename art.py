@@ -175,7 +175,8 @@ def bleedHit():
     print("\ \  _\ \  / / /__  / /__/_  / /__/_\ \ \/ / / ")
     print(" ) )(__) )( (_____(( (_____\( (_____\) )__/ /  ")
     print(" \/____\/  \/_____/ \/_____/ \/_____/\/___\/   ")
-                                               
+    print("\n")     # one of the most confusing errors ever, thank you pycache        
+
 def deathAnimation():
     print("        ;'*¨'`·- .,                             _,.,  °                    ,.,   '          ;'*¨'`·- .,          "    )
     print("    \`:·-,. ,   '` ·.  '              ,.·'´  ,. ,  `;\ '                ;´   '· .,         \`:·-,. ,   '` ·.  '     " )

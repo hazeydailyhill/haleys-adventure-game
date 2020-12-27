@@ -1,5 +1,6 @@
 import random
 import math
+import gameMechanics
 
 class Enemy: #Create player functions: punch, kick, be bad at acting(i want this to be his most deadly weapon in a fight. Causes -30 damage), damage robert/health -= player1.punch
     def __init__(self, name, socialSecurityNumber, health, opponent, bleed):
@@ -39,6 +40,7 @@ class Enemy: #Create player functions: punch, kick, be bad at acting(i want this
     def heal(self):
         self.health += 10
         print(self.name, "has healed to", self.health, "health. nice.")
+        self.bleed = False
 
 
     def robertAttack(self):
@@ -47,12 +49,12 @@ class Enemy: #Create player functions: punch, kick, be bad at acting(i want this
         else:
             choice = random.randint(1,3)
         if choice == 1:
-            return self.punch()
+            return gameMechanics.punch(self.opponent, self.name)
         elif choice == 2:
-            return self.kick()
+            return self.kick(), False
         elif choice == 3:
-            return self.actBadly()
+            return self.actBadly(), False
         else:
             self.heal()
-            return 0
+            return 0, False
 

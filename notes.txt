@@ -9,3 +9,4 @@ retaliate improv parry option
 ascii art intro
 uncomment character creation and update
 rework crit hit system
+if you hit enter instead of 1,2,3 make it go ur dumb and skip turn
