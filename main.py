@@ -20,7 +20,6 @@ robert = Enemy("Robert Pattinson", 1234567, 100, player1.name, False)
 os.system("cls")
 while robert.health > 0 and player1.health > 0:
     print("\n"+player1.name+"'s turn"+"\n")
-    print(robert.bleed)
     initialBleed = robert.bleed
     directDamage, robert.bleed = player1.attackChoice()
     if initialBleed != robert.bleed:
@@ -33,7 +32,7 @@ while robert.health > 0 and player1.health > 0:
         player1.health = gameMechanics.damageCheck(player1.health, robert.robertAttack(), False)
         gameMechanics.healthCheck(player1.name, player1.health)
     else:
-        art.deathAnimation()
+        art.victoryAnimation()
         print(robert.name+" has been slain, thank God, his movies were crimes against humanity")
     if player1.health <= 0:
         art.deathAnimation()
