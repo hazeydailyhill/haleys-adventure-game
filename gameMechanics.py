@@ -1,3 +1,6 @@
+import random
+import math
+
 def healthBar(health):
     healthCounter = health//5
     healthBar = "["
@@ -18,3 +21,8 @@ def damageCheck(victim, dmg, bleed): #victim reps the health of the person getti
     if bleed:
         victim -= 1
     return(victim)
+
+def damageProbability(maximumDamage, probabilityMultiplier, baseDamage):
+    x = random.random()
+    damage = int((maximumDamage*(x*math.exp(probabilityMultiplier*(x-1)))+baseDamage)//1)
+    return damage 

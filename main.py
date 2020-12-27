@@ -1,8 +1,8 @@
 import random
 import os
 import time
-import credits1
 import gameMechanics
+import art
 from badGuy import *
 from User import *
 
@@ -40,4 +40,4 @@ while robert.health > 0 and player1.health > 0:
     #robert.health = 0 
     cont = input("\nhit enter to continue...\n")
     os.system("cls")
-credits1.credits()
+art.credits()

@@ -1,5 +1,6 @@
 import random 
 import art
+import gameMechanics
 
 class Player: #Create player functions: startFight, punch, kick, curbstomp, steal identity (get his social security number and attain his wealth)
     def __init__(self, name, age, height, socialSecurityNumber, health, enemy):
@@ -40,11 +41,11 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
         return damage
     
     def curbstomp(self):
-        if random.randint(0,10) %2 == 0:
+        if random.randint(0,100) >= 75:
             damage = 0 
             print("you missed. please practice your curbstomping")
         else:
-            damage = random.randint(15,27)
+            damage = gameMechanics.damageProbability(30, 5, 5)
             print("You have successfully curb stomped for", damage, "damage")
         return damage
     
