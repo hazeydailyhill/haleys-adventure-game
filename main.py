@@ -1,4 +1,7 @@
 import random
+import os
+import time
+import credits1
 from badGuy import *
 from User import *
 
@@ -12,12 +15,18 @@ player1 = Player("Haley",19,0,1,100, "Robert Pattinson")
 
 
 
-robert = Enemy("Robert Pattinson", 1234567, 100)
+robert = Enemy("Robert Pattinson", 1234567, 100, player1.name)
+os.system("cls")
 while robert.health > 0 and player1.health > 0:
     print("\n"+player1.name+"'s turn"+"\n")
     robert.health -= player1.attackChoice()
     robert.healthCheck()
-    print("\n"+robert.name+"'s turn"+"\n")
-    player1.health -= robert.robertAttack()
-    player1.healthCheck()
-
+    time.sleep(1)
+    if robert.health > 0:
+        print("\n"+robert.name+"'s turn"+"\n")
+        player1.health -= robert.robertAttack()
+        player1.healthCheck()
+    #robert.health = 0 
+    cont = input("\nhit enter to continue...\n")
+    os.system("cls")
+credits1.credits()

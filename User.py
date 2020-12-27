@@ -23,7 +23,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
             damage = 0
         else:
             damage = random.randint(7, 15)
-            print("You have punched Rob for",damage, "damage")
+            print("You have punched", self.enemy, "for",damage, "damage")
         return damage
 
     def kick(self):
@@ -31,7 +31,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
         if random.randint(0,10) %7 == 0:
             damage *= 2
             print("CRITICAL HIT!!!!!")
-        print("You have kicked Mr. Pattinson for", damage, "damage")
+        print("You have kicked", self.enemy, "for", damage, "damage")
         return damage
     
     def curbstomp(self):
@@ -52,7 +52,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
         elif userIn == 3: #curbstomp
             return self.curbstomp()
         else:
-            print("input not recognized, turn skipped")
+            print("input not recognized, turn skipped, eat farts")
             return 0
     
     def healthCheck(self):
