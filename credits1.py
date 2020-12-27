@@ -64,4 +64,3 @@ def credits():
     time.sleep(.4)
     print("\t\t\t\t\tPlaying\n\n\n\n\n")
     time.sleep(2)
-credits()
