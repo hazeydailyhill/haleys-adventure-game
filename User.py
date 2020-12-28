@@ -39,13 +39,15 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
     def attackChoice(self):
         os.system("cls")
         try:
-            userIn = int(input("choose your attack! (enter a number)\n 1. Punch \n 2. Kick \n 3. Curb Stomp \n Input: "))
+            userIn = int(input("choose your attack! (enter a number)\n 1. Punch \n 2. Kick \n 3. Curb Stomp \n 4. Body Slam \n Input: "))
             if userIn == 1: #punch
                 return gameMechanics.punch(self.enemy, self.name)
             elif userIn == 2: #kick 
                 return self.kick(), False
             elif userIn == 3: #curbstomp
                 return self.curbstomp(), False
+            elif userIn == 4: #bodySlam
+                return gameMechanics.bodySlam(self.enemy, self.name), False
             else:
                 print("input not recognized, turn skipped, eat farts")
                 return 0, False
@@ -78,7 +80,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
                 self.health, self.bleed = gameMechanics.heal(self.health, self.name)
                 return 0, False
             elif userIn ==2: #Flee
-                print("You cant run or hide yet")
+                print("Fair enough.")
                 exit()
             else:
                 print("read, please.")
@@ -101,10 +103,10 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
             return 0, False
 
 
-def newPlayer():
-    name = str(input("what is your name? "))
+#def newPlayer():
+    #name = str(input("what is your name? "))
     #age = str(input("how old are you? " ))
     #height = str(input("how tall are you? "))
     #socialSecurityNumber = str(input("what is your social security number? "))
     #return name, age, height, socialSecurityNumber 
-    return name
+   # return name

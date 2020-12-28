@@ -58,5 +58,11 @@ def heal(health, name):
     print(name,"healed to", health, "health. nice.")
     return health, False
 
-
-    
+def bodySlam(enemy, name):
+    if random.randint(0,100) > 70:
+        damage = 0
+        print(name, "failed to bodyslam", enemy, "for", damage, "damage. Bummer.")
+    else: 
+        damage = damageProbability(20, 3, .5)
+        print(name, "bodyslammed", enemy, "for", damage, "damage. Alright.")
+    return damage
