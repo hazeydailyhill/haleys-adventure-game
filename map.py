@@ -1,5 +1,5 @@
 import numpy as np
-
+import random
 
 class PlayerPos():
     def __init__(self,xPos,yPos,xSize,ySize):
@@ -7,11 +7,14 @@ class PlayerPos():
         self.ySize = ySize
         self.xPos = xPos
         self.yPos = yPos
+ 
 
     def worldMap(self):
         arrayMap = np.chararray((self.ySize,self.xSize), unicode = True)
         arrayMap[:] = "`"
         arrayMap[self.yPos][self.xPos] = "x" #position 
+        x,y = self.shop() #This is to prove a point 
+        arrayMap[x][y] = "0"#This is to prove a point 
         print(arrayMap)
         
 
@@ -55,5 +58,15 @@ class PlayerPos():
         elif (initalPos != self.ySize-1) and (finalPos-initalPos == 1) and (direct == "y"):
             self.yPos += 1
             
+    def shop(self):
+        randX = random.randint(0,self.xSize-1)
+        randY = random.randint(0,self.ySize-1)
+        #define shop interactables here
+        return randX, randY
+
+a = PlayerPos(1,1,10,10)
+a.worldMap()
+
+
 
     
