@@ -1,17 +1,25 @@
-write function for miss chance
-###rework all damages to use damage probability
-###user needs to be able to bleeeed
-###bad guy needs better ai to fight (have heal incentive at lower health)
+TO DO:
+write function for miss chance*
 add items or magic
-new ability?
-!!!map- run into enemies
+new ability?*
 retaliate improv parry option
-###ascii art intro
 uncomment character creation and update
-!!!rework crit hit system
-###if you hit enter instead of 1,2,3 make it go ur dumb and skip turn
-###menu system: attack(add magic), defend (parry (lower chance), block(use chance)), action(heal, 
-flee(make map to run around))
-!!! add magic, parries, back option in menu
+flee(use map to run around))
 save feature for onscreen text (CRIT)
-done, todo, important
+
+
+IMPORTANT:
+!!!map- run into enemies
+!!!rework crit hit system
+!!! add magic, parries, back option in menu
+
+DONE!:
+rework all damages to use damage probability
+user needs to be able to bleeeed
+bad guy needs better ai to fight (have heal incentive at lower health)
+ascii art intro
+if you hit enter instead of 1,2,3 make it go ur dumb and skip turn
+menu system
+
+
+attack(add magic), defend (parry (lower chance), block(use chance)), action(heal)
