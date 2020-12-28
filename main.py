@@ -25,7 +25,7 @@ while robert.health > 0 and player1.health > 0:
     directDamage, robert.bleed = player1.menu()
     if initialBleed != robert.bleed:
         robert.bleed = True
-    robert.health = gameMechanics.damageCheck(robert.health, directDamage, robert.bleed, robert.guard)
+    robert.health, robert.guard = gameMechanics.damageCheck(robert.health, directDamage, robert.bleed, robert.guard)
     gameMechanics.healthCheck(robert.name, robert.health, robert.bleed)
     time.sleep(1)
     if robert.health > 0:
@@ -34,7 +34,7 @@ while robert.health > 0 and player1.health > 0:
         directDamage, player1.bleed = robert.robertAttack()
         if initialBleed != player1.bleed:
             player1.bleed = True
-        player1.health = gameMechanics.damageCheck(player1.health, directDamage, player1.bleed, player1.guard)
+        player1.health, player1.guard = gameMechanics.damageCheck(player1.health, directDamage, player1.bleed, player1.guard)
         gameMechanics.healthCheck(player1.name, player1.health, player1.bleed)
     else:
         art.victoryAnimation()

@@ -20,7 +20,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
         return self.health
 
     def kick(self):
-        damage = random.randint(6, 12)
+        damage = gameMechanics.damageProbability(15, 2.5, 1)
         if random.randint(0,10) %7 == 0:
             damage *= 2
             art.criticalHit()
@@ -32,7 +32,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
             damage = 0 
             print("you missed. please practice your curbstomping")
         else:
-            damage = gameMechanics.damageProbability(30, 5, 5)
+            damage = gameMechanics.damageProbability(30, 5, .7)
             print("You have successfully curb stomped for", damage, "damage")
         return damage
 
@@ -59,8 +59,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
             if userIn ==1: #attack
                 return self.attackChoice()
             elif userIn ==2: #Defend
-                print("slow your roll speedracer, we don't know how to set that up yet")
-                return 0, False
+                return self.defend()
             elif userIn == 3: #Action
                 return self.action()
             else:
@@ -91,9 +90,10 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
     def defend(self):
         os.system("cls")
         try:
-            userIn = int(input("Choose your move! \n1. Block \n2. Parry"))
+            userIn = int(input("Choose your move! \n1. Block \n2. Parry\n Input: "))
             if userIn == 1: #block
-                print("block doesn't exist yet")
+                self.guard = True
+                return 0, False
             if userIn == 2: #Parry
                 print("Parrying isn't an option yet!")
         except ValueError:

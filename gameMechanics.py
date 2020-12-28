@@ -22,22 +22,28 @@ def healthCheck(name, health, bleed): #player
     healthBar(health, bleed)
 
 def damageCheck(victim, dmg, bleed, guard): #victim reps the health of the person getting punched
-    if (guard == True) and (random.randint(0,1) == 1):
-        dmg = 0 
-    victim -= dmg
+    if dmg > 0: 
+        if (guard == True) and (random.randint(0,1) == 1):
+            dmg = 0 
+            print("DAMAGE BLOCKED")
+            guard = False
+        elif guard == True:
+            print("BLOCK MISSED")
+            guard = False
+        victim -= dmg
     if bleed == True:
         victim -= 1
-    return(victim)
+    return victim, guard
 
 def damageProbability(maximumDamage, probabilityMultiplier, baseDamage):
     x = random.random()
-    damage = int((maximumDamage*(x*math.exp(probabilityMultiplier*(x-1)))+baseDamage)//1)
+    damage = int((maximumDamage*(x*math.exp(probabilityMultiplier*(x-1))+baseDamage))//1)
     return damage 
 
 def punch(enemy, name):
     bleed = False
     if random.randint(0,100) <= 5:
-        print(name+"'s attack failed")
+        print(name+" swings and misses")
         damage = 0
     else:
         damage = random.randint(7, 15)
@@ -51,7 +57,6 @@ def heal(health, name):
     health += 14
     print(name,"healed to", health, "health. nice.")
     return health, False
-        
 
 
     

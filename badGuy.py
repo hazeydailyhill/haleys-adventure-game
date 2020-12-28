@@ -11,17 +11,8 @@ class Enemy: #Create player functions: punch, kick, be bad at acting(i want this
         self.bleed = bleed #bleed damage stat is a boolean (either bleeding or not TF)
         self.guard = guard
 
-    def punch(self):
-        if random.randint(0,10) %7 == 0:
-            damage = 0
-            print(self.name, "swings and misses")
-        else:
-            damage = random.randint(7,13)
-            print(self.opponent,"has been punched for", damage, "damage.")
-        return damage
-
     def kick(self):
-        damage = random.randint(6,11)
+        damage = gameMechanics.damageProbability(12, 3, .7)
         if random.randint(0,10) %5 == 0:
             damage -= 2
             print("His chicken legs provide a weak kick.")
@@ -29,8 +20,7 @@ class Enemy: #Create player functions: punch, kick, be bad at acting(i want this
         return damage 
 
     def actBadly(self):
-        x = random.randint(0,800)
-        damage = int((8.1*(math.log(x+7.5,10))+1)//1)
+        damage = gameMechanics.damageProbability(25, 5, .6)
         print("Robert has begun doing improv, which deals a whopping", damage, "damage to",self.opponent+"'s psyche")
         return damage
     
@@ -45,17 +35,49 @@ class Enemy: #Create player functions: punch, kick, be bad at acting(i want this
 
 
     def robertAttack(self):
-        if self.bleed:
-            choice = random.randint(1,4)
+        if self.health > 50:
+            if self.bleed:
+                choice = random.randint(1,4)
+            else:
+                choice = random.randint(1,3)
+            if choice == 1:
+                return gameMechanics.punch(self.opponent, self.name)
+            elif choice == 2:
+                return self.kick(), False
+            elif choice == 3:
+                return self.actBadly(), False
+            else:
+                self.health, self.bleed = gameMechanics.heal(self.health, self.name)
+                return 0, False
         else:
-            choice = random.randint(1,3)
-        if choice == 1:
-            return gameMechanics.punch(self.opponent, self.name)
-        elif choice == 2:
-            return self.kick(), False
-        elif choice == 3:
-            return self.actBadly(), False
-        else:
-            self.health, self.bleed = gameMechanics.heal(self.health, self.name)
-            return 0, False
-
+            if self.bleed == False:
+                choice = random.randint(0,100)
+                if (choice >= 40) and (choice < 60):
+                    return gameMechanics.punch(self.opponent, self.name)
+                elif (choice >= 60) and (choice < 80):
+                    return self.kick(), False
+                elif (choice >= 80) and (choice < 100):
+                    return self.actBadly(), False
+                elif (choice >= 20) and (choice < 40):
+                    self.guard = True
+                    print(self.name, "has his guard up")
+                    return 0, False
+                else:
+                    self.health, self.bleed = gameMechanics.heal(self.health, self.name)
+                    return 0, False
+            else:
+                choice = random.randint(0,100)
+                if (choice >= 30) and (choice < 40):
+                    return gameMechanics.punch(self.opponent, self.name)
+                elif (choice >= 40) and (choice < 50):
+                    return self.kick(), False
+                elif (choice >= 50) and (choice < 70):
+                    return self.actBadly(), False
+                elif (choice >= 20) and (choice < 30):
+                    self.guard = True
+                    print(self.name, "has his guard up")
+                    return 0, False
+                else:
+                    self.health, self.bleed = gameMechanics.heal(self.health, self.name)
+                    return 0, False
+        
