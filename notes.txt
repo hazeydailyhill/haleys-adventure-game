@@ -1,7 +1,7 @@
 write function for miss chance
 !!!rework all damages to use damage probability
 ###user needs to be able to bleeeed
-bad guy needs better ai to fight
+bad guy needs better ai to fight (have heal incentive at lower health)
 add items or magic
 new ability?
 map- run into enemies
@@ -10,4 +10,4 @@ retaliate improv parry option
 uncomment character creation and update
 !!!rework crit hit system
 ###if you hit enter instead of 1,2,3 make it go ur dumb and skip turn
-menu system: attack, heal, use item 
+menu system: attack(add magic), defend (parry, block(use chance)), action(heal, flee(make map to run around))

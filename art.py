@@ -219,7 +219,8 @@ def titleScreen():
     print("                                 J88\"                                                                .dWi   `88E           \"\"*888%~")                                                   
     print("                                 @%                                                                  4888~  J8%               `\"         ")                                                             
     print("                               :\"                                                                     ^\"===*\"`                                                               ")                     
-
+    time.sleep(3)
+    #os.system("cls")
 
                                                                                                                                                                      
                                                                                         

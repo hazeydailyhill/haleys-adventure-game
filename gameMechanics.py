@@ -35,7 +35,7 @@ def damageProbability(maximumDamage, probabilityMultiplier, baseDamage):
 def punch(enemy, name):
     bleed = False
     if random.randint(0,100) <= 5:
-        print("your attack failed")
+        print(name+"'s attack failed")
         damage = 0
     else:
         damage = random.randint(7, 15)
@@ -44,3 +44,8 @@ def punch(enemy, name):
             art.bleedHit()
         print(name, "punched", enemy, "for",damage, "damage")
     return damage, bleed 
+
+def heal(health, name):
+    health += 14
+    print(name,"healed to", health, "health. nice.")
+    return health, False

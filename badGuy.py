@@ -55,6 +55,6 @@ class Enemy: #Create player functions: punch, kick, be bad at acting(i want this
         elif choice == 3:
             return self.actBadly(), False
         else:
-            self.heal()
+            self.health, self.bleed = gameMechanics.heal(self.health, self.name)
             return 0, False
 

@@ -18,10 +18,11 @@ player1 = Player("Haley",19,0,1,100, "Robert Pattinson", False)
 
 robert = Enemy("Robert Pattinson", 1234567, 100, player1.name, False)
 os.system("cls")
+art.titleScreen()
 while robert.health > 0 and player1.health > 0:
     print("\n"+player1.name+"'s turn"+"\n")
     initialBleed = robert.bleed
-    directDamage, robert.bleed = player1.attackChoice()
+    directDamage, robert.bleed = player1.menu()
     if initialBleed != robert.bleed:
         robert.bleed = True
     robert.health = gameMechanics.damageCheck(robert.health, directDamage, robert.bleed)
