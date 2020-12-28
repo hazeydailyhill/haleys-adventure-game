@@ -10,4 +10,4 @@ retaliate improv parry option
 uncomment character creation and update
 !!!rework crit hit system
 ###if you hit enter instead of 1,2,3 make it go ur dumb and skip turn
-menu system: attack(add magic), defend (parry, block(use chance)), action(heal, flee(make map to run around))
+menu system: attack(add magic), defend (parry (lower chance), block(use chance)), action(heal, flee(make map to run around))

@@ -3,12 +3,13 @@ import math
 import gameMechanics
 
 class Enemy: #Create player functions: punch, kick, be bad at acting(i want this to be his most deadly weapon in a fight. Causes -30 damage), damage robert/health -= player1.punch
-    def __init__(self, name, socialSecurityNumber, health, opponent, bleed):
+    def __init__(self, name, socialSecurityNumber, health, opponent, bleed, guard):
         self.name = name 
         self.socialSecurityNumber = socialSecurityNumber
         self.health = health
         self.opponent = opponent
         self.bleed = bleed #bleed damage stat is a boolean (either bleeding or not TF)
+        self.guard = guard
 
     def punch(self):
         if random.randint(0,10) %7 == 0:

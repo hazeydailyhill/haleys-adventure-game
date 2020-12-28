@@ -4,14 +4,12 @@ import gameMechanics
 import os
 
 class Player: #Create player functions: startFight, punch, kick, curbstomp, steal identity (get his social security number and attain his wealth)
-    def __init__(self, name, age, height, socialSecurityNumber, health, enemy, bleed):
+    def __init__(self, name, health, enemy, bleed, guard):
         self.name = name 
-        self.age = age
-        self.height = height
-        self.socialSecurityNumber = socialSecurityNumber
         self.health = health
         self.enemy = enemy
         self.bleed = bleed
+        self.guard = guard
     
     def stealIdentity(self, socialSecurityNumber):
          print("Congratulations, you have weakened robert by 30% and you now control all of his wealth")
@@ -37,7 +35,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
             damage = gameMechanics.damageProbability(30, 5, 5)
             print("You have successfully curb stomped for", damage, "damage")
         return damage
-    
+
     def attackChoice(self):
         os.system("cls")
         try:
@@ -90,9 +88,23 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
             print("that's not even a number, turn skipped, eat farts")
             return 0, False
     
+    def defend(self):
+        os.system("cls")
+        try:
+            userIn = int(input("Choose your move! \n1. Block \n2. Parry"))
+            if userIn == 1: #block
+                print("block doesn't exist yet")
+            if userIn == 2: #Parry
+                print("Parrying isn't an option yet!")
+        except ValueError:
+            print("that's not even a number, turn skipped, eat farts")
+            return 0, False
+
+
 def newPlayer():
     name = str(input("what is your name? "))
-    age = str(input("how old are you? " ))
-    height = str(input("how tall are you? "))
-    socialSecurityNumber = str(input("what is your social security number? "))
-    return name, age, height, socialSecurityNumber 
+    #age = str(input("how old are you? " ))
+    #height = str(input("how tall are you? "))
+    #socialSecurityNumber = str(input("what is your social security number? "))
+    #return name, age, height, socialSecurityNumber 
+    return name

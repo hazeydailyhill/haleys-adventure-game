@@ -21,7 +21,9 @@ def healthCheck(name, health, bleed): #player
         print(name+"'s health now:", health)
     healthBar(health, bleed)
 
-def damageCheck(victim, dmg, bleed): #victim reps the health of the person getting punched
+def damageCheck(victim, dmg, bleed, guard): #victim reps the health of the person getting punched
+    if (guard == True) and (random.randint(0,1) == 1):
+        dmg = 0 
     victim -= dmg
     if bleed == True:
         victim -= 1
@@ -49,3 +51,7 @@ def heal(health, name):
     health += 14
     print(name,"healed to", health, "health. nice.")
     return health, False
+        
+
+
+    

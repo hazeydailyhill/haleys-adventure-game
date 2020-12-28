@@ -10,13 +10,13 @@ from User import *
 #IM RUNNING THINGS BELOW HERE!!!!!!!
 #w,x,y,z = newPlayer() #w= name, x= age, y= height, z=SS#, ENTERED 100 FOR HEALTH, ENTERED ROBERT FOR ENEMY
 #player1 = Player(w,x,y,z,100,Robert)
-player1 = Player("Haley",19,0,1,100, "Robert Pattinson", False)
+player1 = Player("Haley", 100, "Robert Pattinson", False, False)
 #print(player1.name)
 #print(player1.health)
 
 
 
-robert = Enemy("Robert Pattinson", 1234567, 100, player1.name, False)
+robert = Enemy("Robert Pattinson", 1234567, 100, player1.name, False, False)
 os.system("cls")
 art.titleScreen()
 while robert.health > 0 and player1.health > 0:
@@ -25,7 +25,7 @@ while robert.health > 0 and player1.health > 0:
     directDamage, robert.bleed = player1.menu()
     if initialBleed != robert.bleed:
         robert.bleed = True
-    robert.health = gameMechanics.damageCheck(robert.health, directDamage, robert.bleed)
+    robert.health = gameMechanics.damageCheck(robert.health, directDamage, robert.bleed, robert.guard)
     gameMechanics.healthCheck(robert.name, robert.health, robert.bleed)
     time.sleep(1)
     if robert.health > 0:
@@ -34,7 +34,7 @@ while robert.health > 0 and player1.health > 0:
         directDamage, player1.bleed = robert.robertAttack()
         if initialBleed != player1.bleed:
             player1.bleed = True
-        player1.health = gameMechanics.damageCheck(player1.health, directDamage, player1.bleed)
+        player1.health = gameMechanics.damageCheck(player1.health, directDamage, player1.bleed, player1.guard)
         gameMechanics.healthCheck(player1.name, player1.health, player1.bleed)
     else:
         art.victoryAnimation()
