@@ -1,22 +1,32 @@
 import numpy as np
 import random
+import os 
+import main
 
-class PlayerPos():
-    def __init__(self,xPos,yPos,xSize,ySize):
-        self.xSize = xSize
-        self.ySize = ySize
+class MapMechanics():
+    def __init__(self,xPos,yPos,xSize,ySize,worldMap,xShop,yShop):
         self.xPos = xPos
         self.yPos = yPos
+        self.xSize = xSize
+        self.ySize = ySize
+        self.xShop = xShop
+        self.yShop = yShop
+        self.worldMap = worldMap
  
+    def mapGenerate(self):
+        self.worldMap = np.chararray((self.ySize,self.xSize), unicode = True)
+        self.worldMap[:] = "`"
 
-    def worldMap(self):
-        arrayMap = np.chararray((self.ySize,self.xSize), unicode = True)
-        arrayMap[:] = "`"
-        arrayMap[self.yPos][self.xPos] = "x" #position 
-        x,y = self.shop() #This is to prove a point 
-        arrayMap[x][y] = "0"#This is to prove a point 
-        print(arrayMap)
-        
+
+    def mapFunction(self):        
+        self.mapGenerate()                 
+        self.worldMap[self.yPos][self.xPos] = "x" #position of player
+        try:
+            self.worldMap[self.yShop][self.xShop] = "+" #position of shop
+            print(self.worldMap)
+        except IndexError:
+            self.shopGenerate()
+            self.mapFunction()
 
     def movePlayer(self):
         try:
@@ -38,12 +48,12 @@ class PlayerPos():
             self.movePlayer()    
 
     def positionCheck(self,initalPos,finalPos,direct):
-        if (initalPos == self.xSize-1) and (finalPos-initalPos == 1) and (direct == "x"):
+        if (initalPos == self.xSize-1) and (finalPos-initalPos == 1) and (direct == "x"): #East
             self.xPos = 0
         elif (initalPos != self.xSize-1) and (finalPos-initalPos == 1) and (direct == "x"):
             self.xPos += 1
 
-        if (initalPos == 0) and (finalPos-initalPos == -1) and (direct == "x"):
+        if (initalPos == 0) and (finalPos-initalPos == -1) and (direct == "x"): #West
             self.xPos = self.xSize-1
         elif (initalPos != 0) and (finalPos-initalPos == -1) and (direct == "x"):
             self.xPos -= 1
@@ -57,16 +67,35 @@ class PlayerPos():
             self.yPos = 0
         elif (initalPos != self.ySize-1) and (finalPos-initalPos == 1) and (direct == "y"):
             self.yPos += 1
-            
-    def shop(self):
-        randX = random.randint(0,self.xSize-1)
-        randY = random.randint(0,self.ySize-1)
-        #define shop interactables here
-        return randX, randY
 
-a = PlayerPos(1,1,10,10)
-a.worldMap()
+        else:
+            pass
+
+    def shopGenerate(self):
+        self.xShop = random.randint(0,self.xSize-1)
+        self.yShop = random.randint(0,self.ySize-1)
+
+    def shopRules(self):
+        if (self.xPos == self.xShop) and (self.yPos == self.yShop):
+            print("#########################\nYou have entered the shop\n#########################")
+            #run something from shop.py
+
+    def hostileEncounter(self):
+        encounterChance = random.random()*100
+        if encounterChance > 85:
+            main.fight()
 
 
+def mapLoop():
+    a = MapMechanics(1,1,15,15,"","","")
+    a.mapGenerate()
+    a.mapFunction()
+    for i in range(100):
+        a.shopRules()
+        a.movePlayer()
+        a.hostileEncounter()
+        os.system("cls")
+        a.mapFunction()
+        
 
     
