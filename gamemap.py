@@ -1,7 +1,7 @@
 import numpy as np
 import random
 import os 
-import main
+import fight
 
 class MapMechanics():
     def __init__(self,xPos,yPos,xSize,ySize,worldMap,xShop,yShop):
@@ -79,24 +79,3 @@ class MapMechanics():
         if (self.xPos == self.xShop) and (self.yPos == self.yShop):
             print("#########################\nYou have entered the shop\n#########################")
             #run something from shop.py
-
-    def hostileEncounter(self):
-        encounterChance = random.random()*100
-        if encounterChance > 85:
-            main.fight()
-
-
-def mapLoop():
-    a = MapMechanics(1,1,15,15,"","","")
-    a.mapGenerate()
-    a.mapFunction()
-    for i in range(100):
-        a.shopRules()
-        a.movePlayer()
-        a.hostileEncounter()
-        os.system("cls")
-        a.mapFunction()
-
-mapLoop()
-
-    

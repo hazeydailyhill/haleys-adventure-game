@@ -81,7 +81,7 @@ class Player: #Create player functions: startFight, punch, kick, curbstomp, stea
                 return 0, False
             elif userIn ==2: #Flee
                 print("Fair enough.")
-                exit()
+                return 999, True
             else:
                 print("read, please.")
                 return 0, False

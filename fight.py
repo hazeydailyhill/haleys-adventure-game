@@ -6,22 +6,22 @@ import art
 from badGuy import *
 from User import *
 
-banana = "Kyle"
-#IM RUNNING THINGS BELOW HERE!!!!!!!
-#w,x,y,z = newPlayer() #w= name, x= age, y= height, z=SS#, ENTERED 100 FOR HEALTH, ENTERED ROBERT FOR ENEMY
-#player1 = Player(w,x,y,z,100,Robert)
-player1 = Player(banana, 100, "Robert Pattinson", False, False)
-#print(player1.name)
-#print(player1.health)
+def hostileEncounter():
+        encounterChance = random.random()*100
+        if encounterChance > 85:
+            fight()
 
-art.titleScreen()
 def fight():
+    name = "Haley"
+    player1 = Player(name, 100, "Robert Pattinson", False, False)
     robert = Enemy("Robert Pattinson", 1234567, 100, player1.name, False, False)
     os.system("cls")
     while robert.health > 0 and player1.health > 0:
         print("\n"+player1.name+"'s turn"+"\n")
         initialBleed = robert.bleed
         directDamage, robert.bleed = player1.menu()
+        if (directDamage == 999) and (robert.bleed == True):
+            return 0
         if initialBleed != robert.bleed:
             robert.bleed = True
         robert.health, robert.guard = gameMechanics.damageCheck(robert.health, directDamage, robert.bleed, robert.guard)
@@ -44,4 +44,3 @@ def fight():
         #robert.health = 0 
         cont = input("\nhit enter to continue...\n")
         os.system("cls")
-    art.credits()
