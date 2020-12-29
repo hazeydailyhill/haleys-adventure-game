@@ -96,6 +96,7 @@ def mapLoop():
         a.hostileEncounter()
         os.system("cls")
         a.mapFunction()
-        
+
+mapLoop()
 
     

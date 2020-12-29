@@ -3,7 +3,6 @@ import os
 import time
 import gameMechanics
 import art
-import gamemap
 from badGuy import *
 from User import *
 
@@ -16,7 +15,6 @@ player1 = Player(banana, 100, "Robert Pattinson", False, False)
 #print(player1.health)
 
 art.titleScreen()
-gamemap.mapLoop()
 def fight():
     robert = Enemy("Robert Pattinson", 1234567, 100, player1.name, False, False)
     os.system("cls")
