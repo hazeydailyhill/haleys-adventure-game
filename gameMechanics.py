@@ -25,10 +25,10 @@ def damageCheck(victim, dmg, bleed, guard): #victim reps the health of the perso
     if dmg > 0: 
         if (guard == True) and (random.randint(0,1) == 1):
             dmg = 0 
-            print("DAMAGE BLOCKED")
+            print("DAMAGE BLOCKED!!!")
             guard = False
         elif guard == True:
-            print("BLOCK MISSED")
+            print("BLOCK MISSED!!!")
             guard = False
         victim -= dmg
     if bleed == True:
@@ -66,3 +66,4 @@ def bodySlam(enemy, name):
         damage = damageProbability(20, 3, .5)
         print(name, "bodyslammed", enemy, "for", damage, "damage. Alright.")
     return damage
+
