@@ -1,4 +1,4 @@
-# haleysAdventureGame
+# haleys-adventure-game
 
 ## Description:
 
